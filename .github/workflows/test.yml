@@ -6,7 +6,7 @@ on:
 
 jobs:
   test:
-    runs-on: docker.io/library/node:20
+    runs-on: ubuntu-latest
 
     env:
       NODE_ENV: development
@@ -16,6 +16,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
       - name: Install dependencies
         run: npm install && npm install -g webpack-cli
